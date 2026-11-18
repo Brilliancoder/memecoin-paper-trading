@@ -1,0 +1,13 @@
+{
+  "name": "memecoin-paper-trading",
+  "version": "1.0.0",
+  "description": "Paper trading for Solana memecoins in the terminal: buy and sell any token with fake SOL, filled at real Jupiter quotes with price impact.",
+  "type": "module",
+  "bin": { "paper": "bin/paper.js" },
+  "scripts": { "start": "node bin/paper.js", "test": "node --test" },
+  "engines": { "node": ">=22" },
+  "keywords": ["solana", "paper-trading", "memecoin", "crypto-simulator", "jupiter", "pump-fun", "trading-practice", "backtesting", "demo-trading", "defi"],
+  "homepage": "https://blixvip.com/memecoin-paper-trading",
+  "repository": { "type": "git", "url": "git+https://github.com/blixtrade/memecoin-paper-trading.git" },
+  "license": "MIT"
+}

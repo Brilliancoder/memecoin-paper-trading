@@ -132,6 +132,7 @@ main(async () => {
         v.rows.map((r) => [c.bold(r.symbol), compact(r.tokens), r.cost.toFixed(4), r.value === null ? c.dim("no route") : r.value.toFixed(4), signed(r.unrealized, r.unrealized === null ? "?" : plus(r.unrealized)), signed(r.roi, r.roi === null ? "?" : pct(r.roi, 0)), c.dim(r.mint)]),
       );
       console.log(c.dim("\n\"Sell now\" is a live Jupiter quote for the whole position, including price impact."));
+      if (v.unpriced) console.log(c.yellow(`${v.unpriced} position${v.unpriced === 1 ? "" : "s"} got no quote, so ${v.unpriced === 1 ? "it counts" : "they count"} as 0 SOL in equity and PnL above.`));
       footer("/memecoin-paper-trading", "Paper trading with AI picks, live charts and a track record");
     });
   }

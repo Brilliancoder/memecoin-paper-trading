@@ -67,15 +67,17 @@ main(async () => {
   if (args.help || !cmd) { console.log(HELP); process.exit(args.help ? 0 : 1); }
   const path = bookPath(args);
   const slippage = Math.max(1, Math.min(5000, Number(args.slippage) || 100));
-  const book = load(path);
   const out = (obj, text) => (args.json ? console.log(JSON.stringify(obj, null, 2)) : text());
 
+  // reset never reads the old file, so it can recover from a corrupt one.
   if (cmd === "reset") {
     const start = a1 !== undefined ? Number(a1) : 10;
     if (!(start > 0)) throw new Error("Starting balance must be a positive number of SOL.");
     save(path, newBook(start));
     return out({ reset: true, startSol: start, file: path }, () => console.log(`Fresh paper portfolio with ${sol(start, 2)} at ${c.dim(path)}`));
   }
+
+  const book = load(path);
 
   if (cmd === "buy") {
     if (!isAddress(a1)) throw new Error("Usage: paper buy <mint> <sol>");
